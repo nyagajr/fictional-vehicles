@@ -3,7 +3,7 @@
 <!-- <h1 style="text-align:center; font-family: 'Pattaya', sans-serif;">Institutions</h1><hr> -->
 
 
-{% for all in cars%}
+<!-- {% for all in cars%}
 
 
 <div class="content-section">
@@ -15,8 +15,8 @@
     <div class="col-md-12">
       <div class="media-body">
         <div class="col-md-4" style='padding:5px; margin-left:250px;'>
-          <h2 class="account-heading" style="font-family: 'Pattaya', sans-serif;"><b>{{all.car_make}}</b></h2><br><br>
-          <p> <b>Name:  </b>{{all.car_model}}</p>
+          <h2 class="account-heading" style="font-family: 'Pattaya', sans-serif;"><b>{{all.car_make}}</b></h2>
+          <p> <b>Name:  </b>{{all.car_moddel}}</p>
           <p> <b>Bio:  </b>{{all.year}}</p><br>
         </div>
 
@@ -31,6 +31,13 @@
   </div>
 </div>
 
-{% endfor %}
+{% endfor %} -->
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" >
+
+</form>
 
 {% endblock %}
