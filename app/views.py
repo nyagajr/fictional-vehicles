@@ -13,3 +13,7 @@ def index(request):
             form.save()
     context = {'form':form}
     return render(request,'index.html', context)
+
+def display(request):
+    cars = CarDetails.objects.all()
+    return render(request,'test.html',locals())
