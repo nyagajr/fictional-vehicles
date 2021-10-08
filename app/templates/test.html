@@ -1,12 +1,16 @@
+{%extends 'all/base.html'%}
 {{block.super}}
 {% block content %}
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" >
+<div class="form-group" style = 'margin-left:250px; margin-top:50px;margin-right:1000px;'>
+  <form action="" method="post">
+      {% csrf_token %}
+      {{form}} <br><br>
+      <input type="submit" class="btn btn-primary btn-block" style = ''>
 
-</form>
+  </form>
+</div>
+
 
 
 {% endblock %}

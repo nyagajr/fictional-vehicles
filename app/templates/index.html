@@ -7,13 +7,15 @@
     {{form}}
     <input type="submit" > -->
 
-</form>
+<!-- </form> -->
 {% for all in cars%}
 
-<div class="col-md-4" style='padding:5px;'>
+<div class="col-md-4" style='padding:5px; margin-left:50px;'>
   <h2 class="account-heading" style="font-family: 'Pattaya', sans-serif;"><b>{{all.car_make}}</b></h2>
-  <p> <b>Name:  </b>{{all.car_moddel}}</p>
-  <p> <b>Bio:  </b>{{all.year}}</p><br>
+  <p> <b>Model:  </b>{{all.car_model}}</p>
+  <p> <b>Year:  </b>{{all.year}}</p><br>
+
+  <a class="btn btn-primary" href="{% url 'update' all.id%}"> Update</a>
 </div>
 
 {% endfor %}
