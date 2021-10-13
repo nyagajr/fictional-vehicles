@@ -13,22 +13,39 @@
 {% if all.front_image %}
 
 
-<p>Front_image:</p>
+<p>Front Image:</p>
     <div class="card-img-top" style='border:#118400; box-shadow: 5px 10px 18px #888888;width: 18rem;'>
       <img src=" {{all.front_image.url}}" alt="jpg" width="350" height="300" />
     </div>
-
-
-
-   <br>
+ <br>
 {% endif %}
 
 {% if all.rear_image %}
 
-<p>Rear_image:</p>
+<p>Rear Image:</p>
 
 <div class="card-img-top" style='border:#118400; box-shadow: 5px 10px 18px #888888;width: 18rem;'>
   <img src=" {{all.rear_image.url}}" alt="jpg" width="350" height="300" />
+</div>
+  <br>
+{% endif %}
+
+{% if all.rear_image %}
+
+<p>Interior:</p>
+
+<div class="card-img-top" style='border:#118400; box-shadow: 5px 10px 18px #888888;width: 18rem;'>
+  <img src=" {{all.dash_image.url}}" alt="jpg" width="350" height="300" />
+</div>
+  <br>
+{% endif %}
+
+{% if all.logo_image %}
+
+<p>Logo Image:</p>
+
+<div class="card-img-top" style='border:#118400; box-shadow: 5px 10px 18px #888888;width: 18rem;'>
+  <img src=" {{all.logo_image.url}}" alt="jpg" width="350" height="300" />
 </div>
   <br>
 {% endif %}

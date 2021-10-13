@@ -7,6 +7,7 @@ class CarDetails(models.Model):
     year = models.CharField(max_length = 30)
     front_image = models.ImageField(upload_to = 'images/', blank=True, null=True)
     rear_image = models.ImageField(upload_to = 'images/', blank=True, null=True)
-    # post = models.CharField(max_length =30)
+    logo_image = models.ImageField(upload_to = 'images/', blank=True, null=True)
+    dash_image = models.ImageField(upload_to = 'images/', blank=True, null=True)
     def __str__(self):
         return self.car_make
