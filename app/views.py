@@ -10,7 +10,7 @@ def display(request):
     form = CarDetailsForm()
 
     if request.method == 'POST':
-        form = CarDetailsForm(request.POST)
+        form = CarDetailsForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('index')
@@ -19,7 +19,7 @@ def display(request):
 
 def updateDisplay(request, pk):
     instance = get_object_or_404(CarDetails, id=pk)
-    form = CarDetailsForm(request.POST or None, instance=instance)
+    form = CarDetailsForm(request.POST or None,request.FILES, instance=instance)
     if form.is_valid():
         form.save()
         return redirect('index')
