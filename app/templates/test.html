@@ -2,10 +2,10 @@
 {{block.super}}
 {% block content %}
 
-<div class="" style = 'margin-left:250px; margin-top:50px;margin-right:1000px;'>
+<div class="" style = 'margin-left:250px; margin-top:50px;margin-right:900px;'>
   <form action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      {{form}} <br><br>
+      <b>{{form.as_p}}</b>
       <input type="submit" class="btn btn-primary btn-block" style = ''>
 
   </form>
