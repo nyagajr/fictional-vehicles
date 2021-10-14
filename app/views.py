@@ -1,8 +1,24 @@
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
 from .models import *
 from .forms import CarDetailsForm
+
+def registerPage(request):
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {'form':form}
+    return render(request, 'accounts/register.html', context)
+
+def loginPage(request):
+    context = {}
+    return render(request, 'accounts/login.html', context)
 
 def display(request):
     cars = CarDetails.objects.all()
