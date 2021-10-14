@@ -2,21 +2,37 @@ from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+
+
 from .models import *
-from .forms import CarDetailsForm
+from .forms import *
+from django.contrib import messages
 
 def registerPage(request):
-    form = UserCreationForm()
+    form = createUserForm()
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = createUserForm(request.POST)
         if form.is_valid():
             form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request,'Account for '+ user + ' created!')
+            return redirect('login')
 
     context = {'form':form}
     return render(request, 'accounts/register.html', context)
 
 def loginPage(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
     context = {}
     return render(request, 'accounts/login.html', context)
 
