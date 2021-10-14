@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
 from .models import *
@@ -33,9 +34,16 @@ def loginPage(request):
         if user is not None:
             login(request, user)
             return redirect('home')
+        else:
+            messages.info(request, 'Incorrect username/password')
     context = {}
     return render(request, 'accounts/login.html', context)
 
+def logoutUser(request):
+    logout(request)
+    return redirect('')
+
+@login_required(login_url='')
 def display(request):
     cars = CarDetails.objects.all()
 
@@ -49,6 +57,7 @@ def display(request):
     context = {'form':form}
     return render(request,'test.html',locals())
 
+@login_required(login_url='')
 def updateDisplay(request, pk):
     instance = get_object_or_404(CarDetails, id=pk)
     form = CarDetailsForm(request.POST or None,request.FILES, instance=instance)
@@ -57,6 +66,7 @@ def updateDisplay(request, pk):
         return redirect('index')
     return render(request, 'test.html', {'form': form})
 
+@login_required(login_url='')
 def index(request):
     cars = CarDetails.objects.all()
     return render(request,'index.html',locals())
