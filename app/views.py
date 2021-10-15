@@ -41,9 +41,9 @@ def loginPage(request):
 
 def logoutUser(request):
     logout(request)
-    return redirect('')
+    return redirect('login')
 
-@login_required(login_url='')
+@login_required(login_url='login')
 def display(request):
     cars = CarDetails.objects.all()
 
@@ -53,20 +53,23 @@ def display(request):
         form = CarDetailsForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('home')
     context = {'form':form}
     return render(request,'test.html',locals())
 
-@login_required(login_url='')
+@login_required(login_url='login')
 def updateDisplay(request, pk):
     instance = get_object_or_404(CarDetails, id=pk)
     form = CarDetailsForm(request.POST or None,request.FILES, instance=instance)
     if form.is_valid():
         form.save()
-        return redirect('index')
+        return redirect('home')
     return render(request, 'test.html', {'form': form})
 
-@login_required(login_url='')
+@login_required(login_url='login')
 def index(request):
     cars = CarDetails.objects.all()
     return render(request,'index.html',locals())
+
+def landing(request):
+    return render(request, 'landing.html')
