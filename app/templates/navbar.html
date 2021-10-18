@@ -16,8 +16,8 @@
     </div>
 
     <div class="col-xs-12 col-md-12 col-md-6 col-lg-6 col-xl-6">
-      <a class="btn btn-primary" href="home"> View all</a>
-      <a class="btn btn-primary" href="display" style=""> Add vehicles</a>
+      <a class="btn btn-primary" href="{% url 'home' %}"> View all</a>
+      <a class="btn btn-primary" href="{% url 'display' %}" style=""> Add vehicles</a>
     </div>
     <p style="font-size:20px;margin-right:40px;">Welcome <b>{{request.user}}</b></p>
    <p><a href="{% url 'logout' %}" style="font-size:20px; text-decoration:none;margin-right:80px; "><b>logout</b></a><p>
