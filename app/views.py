@@ -4,12 +4,14 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .decorators import unauthenticated_user
 
 
 from .models import *
 from .forms import *
 from django.contrib import messages
 
+@unauthenticated_user
 def registerPage(request):
     form = createUserForm()
 
@@ -24,6 +26,7 @@ def registerPage(request):
     context = {'form':form}
     return render(request, 'accounts/register.html', context)
 
+@unauthenticated_user
 def loginPage(request):
 
     if request.method == 'POST':
@@ -42,6 +45,11 @@ def loginPage(request):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+def userPage(request):
+    context = {}
+    return render(request, 'accounts/user.html', context)
+
 
 @login_required(login_url='login')
 def display(request):
