@@ -79,5 +79,12 @@ def index(request):
     cars = CarDetails.objects.all()
     return render(request,'index.html',locals())
 
+@unauthenticated_user
 def landing(request):
     return render(request, 'landing.html')
+
+
+@unauthenticated_user
+def display_demo(request):
+    cars = CarDetails.objects.all()
+    return render(request, 'demo.html',locals())
