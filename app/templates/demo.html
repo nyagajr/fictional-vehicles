@@ -4,9 +4,6 @@
 
 {% for all in cars%}
 
-
-<p style="font-size:20px;margin-right:40px;">User <b>{{request.username}}</b></p>
-
 <div class="col-md-4" style='padding:5px; margin-left:50px;'>
   <h2 class="account-heading" style="font-family: 'Pattaya', sans-serif;"><b>{{all.car_make}}</b></h2>
   <p> <b>Model:  </b>{{all.car_model}}</p>
@@ -23,26 +20,6 @@
  <br>
 {% endif %}
 
-{% if all.rear_image %}
-
-<p><b>Rear Image:</b></p>
-
-<div class="card-img-top" style='border:#118400; box-shadow: 5px 10px 18px #888888;width: 18rem;'>
-  <img src=" {{all.rear_image.url}}" alt="jpg" width="350" height="300" />
-</div>
-  <br>
-{% endif %}
-
-{% if all.rear_image %}
-
-<p><b>Interior:</b></p>
-
-<div class="card-img-top" style='border:#118400; box-shadow: 5px 10px 18px #888888;width: 18rem;'>
-  <img src=" {{all.dash_image.url}}" alt="jpg" width="350" height="300" />
-</div>
-  <br>
-{% endif %}
-
 {% if all.logo_image %}
 
 <p><b>Logo Image:</b></p>
@@ -53,7 +30,7 @@
   <br>
 {% endif %}
 
-  <a class="btn btn-primary" href="{% url 'update' all.id%}"> Update</a> <br><br>
+  <a class="btn btn-primary" href="{% url 'login'%}"> View more..</a> <br><br>
 </div>
 
 <hr>
