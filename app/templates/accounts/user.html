@@ -2,6 +2,17 @@
 {{block.super}}
 {% block content %}
 
-<h2>User Profile</h2>
+
+
+<div class="content-section">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{user.profile.prof_pic.url}}" alt="">
+    <h2 class="account-heading">User: {{user.username}}</h2> <br>
+  </div><br>
+  <div>
+    Bio: {{user.profile.bio}}
+  </div>
+
+</div>
 
 {% endblock %}
