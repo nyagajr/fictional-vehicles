@@ -9,7 +9,7 @@ from .models import *
 class CarDetailsForm(ModelForm):
     class Meta:
         model = CarDetails
-        fields = '__all__'
+        fields = ['car_make','car_model','year','front_image','rear_image','logo_image','dash_image']
 
 class createUserForm(UserCreationForm):
     class Meta:
